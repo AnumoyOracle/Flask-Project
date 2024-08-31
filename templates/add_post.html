@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='img/about-bg.jpg')}}')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="page-heading">
+          <h1>Add Posts</h1>
+          <span class="subheading">Ready to showcase your posts to others ?</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <p>Please fill the necessary details of your post ...</p>
+      <form id="contactForm" action="/add-post" method="POST" enctype="multipart/form-data" novalidate>
+        <div class="control-group">
+          <div class="form-group floating-label-form-group controls">
+            <label>Title</label>
+            <input type="text" class="form-control" placeholder="Title" name="title" id="name" required
+              data-validation-required-message="Please enter the title of your post.">
+            <p class="help-block text-danger"></p>
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="form-group floating-label-form-group controls">
+            <label>Content</label>
+            <input type="text" class="form-control" placeholder="Content" name="content" id="email" required
+              data-validation-required-message="Please enter the content of your post.">
+            <p class="help-block text-danger"></p>
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="form-group col-xs-12 floating-label-form-group controls">
+            <label>Slug</label>
+            <input type="text" class="form-control" placeholder="Slug" name="slug" id="phone" required
+              data-validation-required-message="Please enter the slug of your post.">
+            <p class="help-block text-danger"></p>
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="form-group col-xs-12 floating-label-form-group controls">
+            <label>Image Upload</label>
+            <input type="file" class="form-control" placeholder="Image upload" name="image_url" id="phone"/>
+            <p class="help-block text-danger"></p>
+          </div>
+        </div>
+        <br>
+        <div id="success"></div>
+        <button type="submit" class="btn btn-primary" id="sendMessageButton">Add</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
