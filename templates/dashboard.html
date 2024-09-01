@@ -21,6 +21,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
+            {% include "message.html" %}
             <table class="table">
                 <thead>
                     <tr>
@@ -41,7 +42,8 @@
                         <td>{{ post.date.strftime('%H:%M:%S') }}</td>
                         <td>{{ post.date.strftime('%d/%m/%y') }}</td>
                         <td><a href="/edit-post/{{post.post_id}}"><button class="btn btn-primary">Edit</button></a></td>
-                        <td><a href="/delete-post/{{post.post_id}}"><button class="btn btn-danger">Delete</button></a></td>
+                        <td><a href="/delete-post/{{post.post_id}}"><button class="btn btn-danger">Delete</button></a>
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>

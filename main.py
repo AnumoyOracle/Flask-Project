@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session
+from flask import Flask, redirect, render_template, request, session, flash, url_for
 from flask_mail import Mail
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -130,6 +130,7 @@ def contact():
             recipients=params["recipients"],
             body=message + " " + phone,
         )
+        flash("Mail has been sent successfully on behalf of you ...", "success")
     return render_template("contact.html", params=params)
 
 
@@ -177,6 +178,7 @@ def add_post():
         db.session.commit()
 
         print("New post added successfully ........")
+        flash("Post has been added successfully", "success")
 
     return render_template("add_post.html", params=params)
 
@@ -207,6 +209,7 @@ def edit_post(post_id):
 
         db.session.commit()
         all_posts = Post.query.all()
+        flash("Post has been edited successfully", "warning")
         return render_template("dashboard.html", params=params, posts=all_posts)
 
     return render_template("edit_post.html", params=params, post=post)
@@ -218,6 +221,7 @@ def delete_post(post_id):
     db.session.delete(post)
     db.session.commit()
     print("Post deleted successfully")
+    flash("Post has been removed successfully", "danger")
     posts = Post.query.all()
     return render_template("dashboard.html", params=params, posts=posts)
 
@@ -256,7 +260,8 @@ def logout():
     session.pop("user")
     print("You have logged out of the website successfully")
     posts = Post.query.all()
-    return render_template("index.html", params=params, posts=posts)
+    return redirect(url_for("home"))
+    # return render_template("contact.html", params=params)
 
 
 if __name__ == "__main__":

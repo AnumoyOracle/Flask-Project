@@ -21,6 +21,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
+      {% include "message.html" %}
       <p>Please fill the necessary details of your post ...</p>
       <form id="contactForm" action="/add-post" method="POST" enctype="multipart/form-data" novalidate>
         <div class="control-group">
@@ -50,7 +51,7 @@
         <div class="control-group">
           <div class="form-group col-xs-12 floating-label-form-group controls">
             <label>Image Upload</label>
-            <input type="file" class="form-control" placeholder="Image upload" name="image_url" id="phone"/>
+            <input type="file" class="form-control" placeholder="Image upload" name="image_url" id="phone" />
             <p class="help-block text-danger"></p>
           </div>
         </div>
